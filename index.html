@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página con Imágenes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            height: 100vh;
+            background-image: url('https://image.jimcdn.com/app/cms/image/transf/dimension=960x10000:format=png/path/s33ba1c48f320650f/image/i2f6ebe63fc624a7a/version/1722469552/image.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center bottom;
+        }
+        #message-box {
+            width: 80%;
+            text-align: center;
+			
+            position: absolute;
+            top: 5%;
+			background-color: rgba(77,69,132,0.74);
+        }
+        #message {
+            font-size: 1.5em;
+			margin:1.3em;
+            color: #ffffff;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.91);
+            margin-bottom: 20px;
+        }
+		  #messa {
+            font-size: 1em;
+			font-family:"Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif" ;
+			margin:0em;
+            color: #ffffff;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.91);
+            margin-bottom: 0px;
+        }
+		
+		 #mess {
+            font-size: 0.8em;
+			font-family:"Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif" ;
+			margin: 0em;
+            color: #ffffff;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.91);
+            margin-bottom: 20px;
+        }
+		
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #538AC5;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            position: absolute;
+            bottom: 20px;
+			
+			
+        }
+        button:hover {
+            background-color: #9B57B1;
+        }
+    </style>
+</head>
+<body>
+    <div id="message-box">
+        <div id="message">Hola queremos decirte qué Dios no te ha olvidado, te invitamos a dar clic en el botón para ver un mensaje de Dios para ti</div>
+		<p id="messa" >Iglesia Minrei</p>
+		<p id="mess" >Av9 #13 - 15 Funza </p>
+    </div>
+    <button onclick="mostrarMensaje()">Mostrar Mensaje</button>
+    <script>
+        const mensajes = [
+            "Dios te ama y tiene un plan maravilloso para tu vida. - Juan 3:16",
+            "Jesús dijo: Yo soy el camino, la verdad y la vida. Nadie viene al Padre sino por mí. - Juan 14:6",
+            "Ven a mí, todos los que están cansados y cargados, y yo los haré descansar. - Mateo 11:28",
+            "El amor de Dios es más grande de lo que puedes imaginar. - Romanos 5:8",
+            "Hay esperanza en Cristo, incluso en los momentos más oscuros. - 1 Pedro 1:3",
+            "Dios nunca te dejará ni te abandonará. - Deuteronomio 31:6",
+            "La fe en Jesús puede transformar tu vida completamente. - 2 Corintios 5:17",
+            "Jesús es la luz del mundo; quien lo sigue no andará en tinieblas. - Juan 8:12",
+            "Dios te conoce por tu nombre y te llama a su amor. - Isaías 43:1",
+            "Cristo murió por ti para darte vida eterna. - Juan 10:10",
+            "No temas, porque Dios está contigo. - Isaías 41:10",
+            "Jesús te ofrece paz que sobrepasa todo entendimiento. - Filipenses 4:7",
+            "El amor de Dios es incondicional y eterno. - Jeremías 31:3",
+            "Cristo es el buen pastor que da su vida por sus ovejas. - Juan 10:11",
+            "La gracia de Dios es suficiente para ti. - 2 Corintios 12:9",
+            "Dios quiere darte un futuro y una esperanza. - Jeremías 29:11",
+            "En Jesús, encontramos perdón y redención. - Efesios 1:7",
+            "La salvación es un regalo de Dios, no por obras. - Efesios 2:8-9",
+            "Jesús es la puerta; quien entre por él será salvo. - Juan 10:9",
+            "Dios nos mostró su amor en que, siendo aún pecadores, Cristo murió por nosotros. - Romanos 5:8",
+            "En Cristo, eres una nueva creación. - 2 Corintios 5:17",
+            "Jesús vino a buscar y a salvar lo que se había perdido. - Lucas 19:10",
+            "El Señor es mi luz y mi salvación; ¿de quién temeré? - Salmo 27:1",
+            "En el amor de Dios no hay temor, sino paz. - 1 Juan 4:18",
+            "Dios quiere darte vida en abundancia. - Juan 10:10",
+            "Jesús es el pan de vida; quien viene a él, nunca tendrá hambre. - Juan 6:35",
+            "Cristo te da una paz que el mundo no puede ofrecer. - Juan 14:27",
+            "En Cristo, tenemos acceso a la gracia en la que estamos firmes. - Romanos 5:2",
+            "Dios te invita a ser parte de su familia. - Juan 1:12",
+            "El Espíritu de Dios te da libertad y transformación. - 2 Corintios 3:17-18",
+            "Jesús es el autor y consumador de nuestra fe. - Hebreos 12:2",
+            "El amor de Dios se ha derramado en nuestros corazones por el Espíritu Santo. - Romanos 5:5",
+            "Dios es fiel y justo para perdonar nuestros pecados. - 1 Juan 1:9",
+            "Jesús es el cordero de Dios que quita el pecado del mundo. - Juan 1:29",
+            "En Cristo, tenemos una herencia incorruptible y eterna. - 1 Pedro 1:4",
+            "Dios te ha dado un espíritu de poder, amor y dominio propio. - 2 Timoteo 1:7",
+            "Jesús nos llama amigos, no siervos. - Juan 15:15",
+            "En Cristo, tenemos un mediador ante Dios. - 1 Timoteo 2:5",
+            "Dios quiere que todos sean salvos y lleguen al conocimiento de la verdad. - 1 Timoteo 2:4",
+            "Jesús es la resurrección y la vida; quien cree en él, aunque muera, vivirá. - Juan 11:25",
+            "Dios te ha creado con un propósito y un plan. - Efesios 2:10",
+            "En Cristo, hay plenitud de gozo y delicias a su diestra. - Salmo 16:11",
+            "Dios te invita a echar toda tu ansiedad sobre él, porque él cuida de ti. - 1 Pedro 5:7",
+            "Jesús es la vid verdadera, y nosotros somos las ramas. - Juan 15:5",
+            "Dios puede hacer mucho más de lo que pedimos o imaginamos. - Efesios 3:20",
+            "El Señor es mi fortaleza y mi cántico; él ha sido mi salvación. - Éxodo 15:2",
+            "Dios es amor; quien permanece en amor, permanece en Dios. - 1 Juan 4:16",
+            "Jesús promete estar con nosotros hasta el fin del mundo. - Mateo 28:20",
+            "Dios es nuestro refugio y fortaleza, nuestro pronto auxilio en las tribulaciones. - Salmo 46:1",
+		    "Dios tiene un propósito para tu vida. - Efesios 2:10",
+			"Jesús te llama a una vida nueva y abundante. - Juan 10:10",
+			"No importa lo que hayas hecho, Dios te ofrece perdón y amor. - Isaías 1:18",
+			"La verdadera paz se encuentra en Jesús. - Juan 14:27",
+			"Dios te conoce íntimamente y te ama profundamente. - Salmo 139:1-3",
+			"Cristo murió para que puedas tener vida eterna. - Juan 3:16",
+			"Jesús te invita a encontrar descanso y alivio en Él. - Mateo 11:28-30",
+			"Dios te acepta tal como eres y te transforma con su amor. - 2 Corintios 5:17",
+			"En Jesús, encuentras la verdadera libertad. - Juan 8:36",
+			"Dios está contigo en cada momento difícil. - Salmo 23:4",
+			"Jesús es el camino, la verdad y la vida. - Juan 14:6",
+			"En Cristo, hay esperanza y un futuro brillante. - Jeremías 29:11",
+			"Dios te ha creado con un valor infinito. - Mateo 10:31",
+			"Jesús te ofrece una relación personal con Dios. - Juan 17:3",
+			"El amor de Dios nunca falla. - 1 Corintios 13:8",
+			"Dios es un refugio seguro en tiempos de necesidad. - Salmo 46:1",
+			"Jesús te invita a beber del agua de vida eterna. - Juan 4:14",
+			"En Cristo, encuentras perdón y redención. - Colosenses 1:13-14",
+			"Dios te llama a ser parte de su familia. - Efesios 1:5",
+			"Jesús es la luz que disipa toda oscuridad. - Juan 1:5",
+			"Dios te ofrece un amor incondicional y eterno. - Romanos 8:38-39",
+			"En Jesús, hay sanidad para tu alma. - 1 Pedro 2:24",
+			"Dios es tu roca y tu fortaleza. - Salmo 18:2",
+			"Jesús te llama a una vida llena de propósito. - 2 Corintios 5:15",
+			"Dios está siempre dispuesto a escucharte. - Jeremías 29:12",
+			"Jesús es el buen pastor que te guía y protege. - Juan 10:14",
+			"Dios te ha dado dones y talentos únicos. - 1 Pedro 4:10",
+			"En Cristo, encuentras un gozo inexplicable. - 1 Pedro 1:8",
+			"Dios nunca te dejará ni te abandonará. - Hebreos 13:5",
+			"Jesús te ofrece una paz duradera. - Filipenses 4:7",
+			"Dios es tu refugio y tu fortaleza. - Salmo 91:2",
+			"En Jesús, hay esperanza para el mañana. - Lamentaciones 3:21-23",
+			"Dios te ama y te busca incansablemente. - Lucas 15:4",
+			"Jesús es el pan de vida que satisface tu alma. - Juan 6:35",
+			"Dios te invita a conocer su amor y gracia. - Efesios 2:4-5",
+			"En Cristo, hay poder para vencer cualquier obstáculo. - Filipenses 4:13",
+			"Dios te llama a vivir en la luz de su amor. - 1 Juan 1:7",
+			"Jesús te ofrece una vida nueva y transformada. - Romanos 6:4",
+			"Dios te sostiene con su mano poderosa. - Isaías 41:10",
+			"En Cristo, encuentras paz en medio de la tormenta. - Marcos 4:39",
+			"Dios te ha elegido y te ama profundamente. - 1 Tesalonicenses 1:4",
+			"Jesús es la vid y nosotros somos las ramas. - Juan 15:5",
+			"Dios te ha dado un espíritu de amor y de poder. - 2 Timoteo 1:7",
+			"En Cristo, hay plenitud de gozo y paz. - Salmo 16:11",
+			"Dios es tu protector y defensor. - Salmo 121:5-6",
+			"Jesús te llama a dejar tus cargas a sus pies. - 1 Pedro 5:7",
+			"Dios te ha dado una nueva identidad en Cristo. - Gálatas 2:20",
+			"En Jesús, encuentras esperanza y salvación. - Hechos 4:12",
+			"Dios te invita a ser su hijo amado. - 1 Juan 3:1",
+			"Jesús te ofrece la vida eterna y la plenitud de su amor. - Juan 10:28",
+			 "Dios tiene un plan perfecto para tu vida. - Jeremías 29:11",
+			"Jesús te ofrece una paz que el mundo no puede dar. - Juan 14:27",
+			"Dios te ama y te llama a acercarte a Él. - Santiago 4:8",
+			"Jesús es el único mediador entre Dios y los hombres. - 1 Timoteo 2:5",
+			"Dios te ofrece el don gratuito de la vida eterna en Cristo. - Romanos 6:23",
+			"Jesús es el buen pastor que da su vida por las ovejas. - Juan 10:11",
+			"Dios es fiel y nunca te dejará. - Deuteronomio 31:6",
+			"En Cristo, tienes una herencia incorruptible. - 1 Pedro 1:4",
+			"Dios te ha creado maravillosamente. - Salmo 139:14",
+			"Jesús te ofrece el agua viva que sacia tu sed espiritual. - Juan 4:13-14",
+			"Dios está contigo en cada momento difícil. - Salmo 46:1",
+			"Jesús te llama a dejar tus preocupaciones a sus pies. - Mateo 11:28",
+			"Dios te ofrece una vida abundante en Cristo. - Juan 10:10",
+			"Jesús es la luz del mundo que ilumina tu camino. - Juan 8:12",
+			"Dios te ha dado un espíritu de valentía y amor. - 2 Timoteo 1:7",
+			"En Cristo, encuentras libertad y paz. - 2 Corintios 3:17",
+			"Dios te invita a confiar en Él con todo tu corazón. - Proverbios 3:5-6",
+			"Jesús te ofrece perdón y reconciliación con Dios. - Colosenses 1:20",
+			"Dios te llama a ser su hijo amado. - Efesios 1:5",
+			"Jesús es la resurrección y la vida. - Juan 11:25",
+			"Dios te ha dado un propósito y una misión. - Efesios 2:10",
+			"Jesús es el camino a la vida eterna. - Juan 14:6",
+			"Dios te ofrece su amor incondicional. - Romanos 5:8",
+			"En Cristo, tienes una esperanza viva. - 1 Pedro 1:3",
+			"Dios te conoce y te llama por tu nombre. - Isaías 43:1",
+			"Jesús es el cordero de Dios que quita el pecado del mundo. - Juan 1:29",
+			"Dios te invita a experimentar su gracia y misericordia. - Efesios 2:8-9",
+			"Jesús te ofrece un nuevo comienzo. - 2 Corintios 5:17",
+			"Dios es tu refugio y fortaleza. - Salmo 91:2",
+			"Jesús te llama a seguirlo y encontrar descanso. - Mateo 11:29",
+			"Dios te ha dado dones y talentos para su gloria. - 1 Pedro 4:10",
+			"En Cristo, tienes acceso a la presencia de Dios. - Hebreos 10:19-20",
+			"Dios te invita a ser parte de su familia eterna. - Juan 1:12",
+			"Jesús es el autor y consumador de nuestra fe. - Hebreos 12:2",
+			"Dios te ofrece paz en medio de las tormentas. - Marcos 4:39",
+			"Jesús te llama a confiar en Él y no temer. - Isaías 41:10",
+			"Dios es tu protector y defensor. - Salmo 121:7-8",
+			"En Cristo, encuentras plenitud de gozo. - Salmo 16:11",
+			"Dios te ha creado para buenas obras. - Efesios 2:10",
+			"Jesús es la vid y nosotros somos las ramas. - Juan 15:5",
+			"Dios te invita a echar todas tus ansiedades sobre Él. - 1 Pedro 5:7",
+			"Jesús te ofrece una vida transformada. - Romanos 12:2",
+			"Dios te ha dado un espíritu de poder y amor. - 2 Timoteo 1:7",
+			"En Cristo, tienes una herencia eterna. - 1 Pedro 1:4",
+			"Dios es tu roca y tu fortaleza. - Salmo 18:2",
+			"Jesús te llama a seguirlo con todo tu corazón. - Mateo 16:24",
+			"Dios te ha elegido y te ama profundamente. - Colosenses 3:12",
+			"Jesús es el pan de vida que satisface tu alma. - Juan 6:35",
+			"Dios te ofrece esperanza y futuro. - Jeremías 29:11",
+			"Jesús es la resurrección y la vida; quien cree en Él vivirá. - Juan 11:25"
+        ];
+
+        function mostrarMensaje() {
+            const mensajeAleatorio = mensajes[Math.floor(Math.random() * mensajes.length)];
+            document.getElementById('message').textContent = mensajeAleatorio;
+        }
+    </script>
+</body>
+</html>
